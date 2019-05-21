@@ -4,6 +4,10 @@ namespace App\Example;
 
 use Illuminate\Http\Request; // Получить пользовательский номер телефона
 
+/**
+ * Получает телефон из формы регистрации и передает в RegisterController
+ *
+ */
 trait Example {
     public static function phone (Request $request)
     {
