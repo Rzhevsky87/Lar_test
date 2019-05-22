@@ -43,6 +43,7 @@ class LoginController extends Controller
 
     /**
      * Get the login username to be used by the controller.
+     * Я заменил name на phone_namber_full
      *
      * @return string
      */

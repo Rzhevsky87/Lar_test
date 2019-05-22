@@ -13,7 +13,7 @@
 
                         <div class="form-group row">
                             <label for="phone_namber_full" class="col-md-4 col-form-label text-md-right">{{ __('Phone') }}</label>
-
+                            {{-- Я заменил name на phone_namber_full --}}
                             <div class="col-md-6">
                                 <input id="phone_namber_full" type="phone_namber_full" class="form-control @error('phone_namber_full') is-invalid @enderror" name="phone_namber_full" value="{{ old('phone_namber_full') }}" required autocomplete="phone_namber_full" autofocus>
 
