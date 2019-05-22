@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+// Мое пространство имен
+use App\Traits\Auth\LoginUser;
 
 class LoginController extends Controller
 {
@@ -19,6 +21,8 @@ class LoginController extends Controller
     */
 
     use AuthenticatesUsers;
+    // Мой трейт
+    //use LoginUser;
 
     /**
      * Where to redirect users after login.
@@ -44,6 +48,6 @@ class LoginController extends Controller
      */
     public function username()
     {
-        return 'name';
+        return 'phone_namber_full';
     }
 }
