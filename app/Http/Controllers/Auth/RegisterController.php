@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request; // Для получения телефона пользователя
-use App\Example\Example; // Мой трейт
+use App\Service\UserPhone; // Мой трейт
 
 class RegisterController extends Controller
 {
@@ -54,7 +54,7 @@ class RegisterController extends Controller
      *
      */
     public function get_phone (Request $request) {
-        $this->phone = Example::phone($request);
+        $this->phone = UserPhone::phone($request);
     }
 
     /**

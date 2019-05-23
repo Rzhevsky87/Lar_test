@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Example;
+namespace App\Service;
 
-use Illuminate\Http\Request; // Получить пользовательский номер телефона
+use Illuminate\Http\Request; // класс пользовательского запроса
 
 /**
  * Получает телефон из формы регистрации и передает в RegisterController
  *
  */
-trait Example {
+trait UserPhone {
     public static function phone (Request $request)
     {
         $phone = [

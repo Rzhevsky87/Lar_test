@@ -4,8 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-// Мое пространство имен
-use App\Traits\Auth\LoginUser;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
