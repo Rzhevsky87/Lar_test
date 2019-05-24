@@ -9,6 +9,11 @@ use Illuminate\Http\Request; // класс пользовательского з
  *
  */
 trait UserPhone {
+
+    /**
+     *
+     *
+     */
     public static function phone (Request $request)
     {
         $phone = [

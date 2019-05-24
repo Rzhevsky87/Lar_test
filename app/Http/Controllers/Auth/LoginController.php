@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-use App\Service\UserPhone; // Мой трейт
+
+use App\Service\PrimaryHandleInput;
 
 class LoginController extends Controller
 {
@@ -30,17 +31,20 @@ class LoginController extends Controller
     protected $redirectTo = '/home';
 
     /**
-     * store user login
+     * Store user login
      *
+     * Моя переменная для хранения email || phone
+     *
+     * @var string
      */
-    protected $var;
+    protected $login;
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(Request $request)
+    public function __construct()
     {
         $this->middleware('guest')->except('logout');
     }
@@ -57,11 +61,13 @@ class LoginController extends Controller
      */
     protected function validateLogin(Request $request)
     {
-        mb_stristr($request->input('login'), '@') ? $this->var = 'email' : $this->var = 'phone_namber_full';
+        $this->login = PrimaryHandleInput::checkEmailOrPhone($request);
+
+        // mb_stristr($request->input('login'), '@') ? $this->login = 'email' : $this->login = 'phone_namber_full';
         $date = $request->input('login');
         $request->offsetUnset('login');
-        $request->merge([$this->var=>$date]);
-        // IT IS WORK!!
+        $request->merge([$this->login=>$date]);
+        // and validate it :
         $request->validate([
             $this->username() => 'required|string',
             'password' => 'required|string',
@@ -70,12 +76,13 @@ class LoginController extends Controller
 
     /**
      * Get the login username to be used by the controller.
-     * Я заменил name на phone_namber_full
+     *
+     * Я заменил строчное значение на переменную
      *
      * @return string
      */
     public function username()
     {
-        return $this->var;
+        return $this->login;
     }
 }
