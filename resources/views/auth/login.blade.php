@@ -12,10 +12,10 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="phone_namber_full" class="col-md-4 col-form-label text-md-right">{{ __('Example') }}</label>
-                            {{-- Я заменил name на phone_namber_full --}}
+                            <label for="phone_namber_full" class="col-md-4 col-form-label text-md-right">{{ __('E-mail or Phone') }}</label>
+                            {{-- Меняю на login --}}
                             <div class="col-md-6">
-                                <input id="phone_namber_full" type="text" class="form-control" name="email" value="{{ old('phone_namber_full') }}" required autocomplete="phone_namber_full" autofocus>
+                                <input id="login" type="text" class="form-control" name="login" value="{{ old('login') }}" required autocomplete="login" autofocus>
                             </div>
                         </div>
 
