@@ -63,7 +63,6 @@ class LoginController extends Controller
     {
         $this->login = PrimaryHandleInput::checkEmailOrPhone($request);
 
-        // mb_stristr($request->input('login'), '@') ? $this->login = 'email' : $this->login = 'phone_namber_full';
         $date = $request->input('login');
         $request->offsetUnset('login');
         $request->merge([$this->login=>$date]);
