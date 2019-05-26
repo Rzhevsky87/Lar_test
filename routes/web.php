@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Auth\Users; // ???
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,4 +27,13 @@ Route::get('/home', 'HomeController@index')->name('home');
  */
 Route::get('/test', function() {
     return view('test');
+});
+
+/**
+ * Тестовый роут - 2
+ * Не работает
+ *
+ */
+Route::get('/test2', function() {
+    return App\Models\Forum\Question::test(Users $a);
 });
