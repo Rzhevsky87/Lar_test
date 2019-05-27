@@ -3,7 +3,6 @@
 namespace App\Models\Forum;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Auth\Users;
 
 class Question extends Model
 {
@@ -12,19 +11,6 @@ class Question extends Model
      */
     public function users()
     {
-        return $this->hasMany('App\Models\Auth\User');
-    }
-
-    /**
-     * Test
-     *
-     */
-    public static function test(Users $users) {
-        $users = $users::all()->name;
-
-        foreach ($users as $user)
-        {
-            echo $user;
-        }
+        return $this->hasOne('App\Models\Auth\User');
     }
 }

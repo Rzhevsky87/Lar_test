@@ -1,7 +1,5 @@
 <?php
 
-use App\Models\Auth\Users; // ???
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,9 +29,12 @@ Route::get('/test', function() {
 
 /**
  * Тестовый роут - 2
- * Не работает
  *
  */
-Route::get('/test2', function() {
-    return App\Models\Forum\Question::test(Users $a);
-});
+Route::get('/examp', 'Example\Example@index'); // Тестовый маршрут
+
+/**
+ * Тестовый роут - 3
+ *
+ */
+Route::get('/examp2', 'Example\Example@test2'); // Тестовый маршрут

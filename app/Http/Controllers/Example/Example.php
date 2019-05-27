@@ -1,0 +1,52 @@
+<?php
+
+namespace App\Http\Controllers\Example;
+
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\Forum\Question;
+use App\Models\Auth\User;
+
+class Example extends Controller
+{
+    /**
+     * Show the test page.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function index(Question $question)
+    {
+        $title = $question->where('id', 1)->first()->title; // Вернет строку
+        $text = $question->where('id', 1)->first()->text; // Вернет строку
+        // $title = $question->get('title');dd($title); // Вернет массив экземпляров (Collection)
+        // dd($question->all()); // Вернет массив экземпляров (Collection)
+        // dd ($question->findOrFail(1)); // Вернет указанный экземпляр или исключение
+        // dd($question->where('id', 1)->first()); // Вернет указанный экземпляр
+        return view('Examples.Example', [
+            'title' => $title,
+            'text' => $text
+            ]);
+    }
+
+    /**
+     * Test
+     *
+     */
+    public static function test(User $users)
+    {
+        $users = $users::all();
+
+        dd($users);
+    }
+
+    /**
+     * Test 2
+     *
+     */
+    public static function test2(Question $question)
+    {
+        $question = $question->find(1)->name;
+
+        dd($question);
+    }
+}
