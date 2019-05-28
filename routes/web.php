@@ -38,3 +38,9 @@ Route::get('/examp', 'Example\Example@index'); // Тестовый маршру�
  *
  */
 Route::get('/examp2', 'Example\Example@test2'); // Тестовый маршрут
+
+/**
+ *
+ *
+ */
+Route::get('/examp3', 'Example\Example@userQuestion');

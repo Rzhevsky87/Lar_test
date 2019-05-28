@@ -3,14 +3,16 @@
 namespace App\Models\Forum;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Auth\User;
 
 class Question extends Model
 {
     /**
-     * Get the comments for the blog post.
+     * Связь с таблицей Users
+     *
      */
     public function users()
     {
-        return $this->hasOne('App\Models\Auth\User');
+        return $this->belongsTo('App\Models\Auth\User');
     }
 }
