@@ -43,4 +43,10 @@ Route::get('/examp2', 'Example\Example@test2'); // Тестовый маршру
  *
  *
  */
-Route::get('/examp3', 'Example\Example@userQuestion');
+Route::get('/examp3', 'Example\Example@Questions');
+
+/**
+ *
+ *
+ */
+Route::get('examp4', 'Example\Example@User');

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class EditUserKey extends Migration
+class AddForeagenKeyBIGINT extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,10 @@ class EditUserKey extends Migration
     public function up()
     {
         Schema::table('questions', function (Blueprint $table) {
-            //$table->renameColumn('users_id', 'user_id');
+            $table->bigInteger('user_id')->unsigned()->index();
+            $table->foreign('user_id')
+              ->references('id')->on('users')
+              ->onDelete('cascade');
         });
     }
 
@@ -26,7 +29,7 @@ class EditUserKey extends Migration
     public function down()
     {
         Schema::table('questions', function (Blueprint $table) {
-            $table->renameColumn('user_id', 'users_id');
+            $table->dropColumn('user_id');
         });
     }
 }
