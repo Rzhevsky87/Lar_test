@@ -56,17 +56,19 @@ class Example extends Controller
     public function Questions (User $user)
     {
         $user = $user->find(4); // Вернул объект user(а)
-        dd ($user);
-        $question = $user->questions; // Все его статьи
+        $questions = $user->questions; // Все его статьи
 
         $user = $user->questions(); // Вернуть объект HasMany содержащий в т.ч. объект User
         $questions = $user->get()->toArray(); // Вернет коллекцию с массивом объектов questions
+        dd ($questions);
     }
 
     public function User (Question $question)
     {
-        $question = $question->findOrFail(2); // Вернул объект question
+        $question = $question->find(2); // Вернул объект question
         $user = $question->user;
-        dd ($user);
+
+        $question = $question->user();
+        $user = $question->get()->toArray();
     }
 }

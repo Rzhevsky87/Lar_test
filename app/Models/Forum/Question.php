@@ -11,7 +11,7 @@ class Question extends Model
      * Связь с таблицей Users
      *
      */
-    public function users()
+    public function user()
     {
         return $this->belongsTo('App\Models\Auth\User');
     }

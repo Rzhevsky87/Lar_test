@@ -14,7 +14,6 @@ class AddForeagenKeyBIGINT extends Migration
     public function up()
     {
         Schema::table('questions', function (Blueprint $table) {
-            $table->bigInteger('user_id')->unsigned()->index();
             $table->foreign('user_id')
               ->references('id')->on('users')
               ->onDelete('cascade');
