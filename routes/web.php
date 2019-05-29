@@ -20,7 +20,13 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 /**
- * Тестовый роут
+ * Questions route
+ *
+ */
+Route::get('users/{id}', '');
+
+/**
+ * Тестовый роут - 1
  *
  */
 Route::get('/test', function() {
@@ -40,13 +46,25 @@ Route::get('/examp', 'Example\Example@index'); // Тестовый маршру�
 Route::get('/examp2', 'Example\Example@test2'); // Тестовый маршрут
 
 /**
- *
+ * Тестовый роут - 4
  *
  */
-Route::get('/examp3', 'Example\Example@Questions');
+Route::get('/examp3', 'Example\Example@UserQuestions');
 
 /**
- *
+ * Тестовый роут - 5
  *
  */
 Route::get('examp4', 'Example\Example@User');
+
+/**
+ * Тестовый роут - 6
+ *
+ */
+Route::get('examp5', 'Example\Example@categories');
+
+/**
+ * Тестовый роут - 7
+ *
+ */
+Route::get('examp6', 'Example\Example@qestions');

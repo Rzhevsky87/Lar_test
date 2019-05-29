@@ -3,7 +3,6 @@
 namespace App\Models\Forum;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Auth\User;
 
 class Question extends Model
 {
@@ -14,5 +13,15 @@ class Question extends Model
     public function user()
     {
         return $this->belongsTo('App\Models\Auth\User');
+    }
+
+    /**
+     * Связь с таблицей категорий
+     *
+     */
+    public function categories()
+    {
+        return $this->belongsToMany('App\Models\Forum\Category')
+            ->withTimestamps();
     }
 }

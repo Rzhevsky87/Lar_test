@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Forum\Question;
 use App\Models\Auth\User;
+use App\Models\Forum\Category;
 
 class Example extends Controller
 {
@@ -30,7 +31,7 @@ class Example extends Controller
     }
 
     /**
-     * Test
+     * Test Вернуть всех юзеров
      *
      */
     public static function test(User $users)
@@ -41,34 +42,56 @@ class Example extends Controller
     }
 
     /**
-     * Test 2
+     * Test 2 Вернуть юзеров через Question
      *
      */
     public static function test2(Question $question)
     {
-        dd ($question->userName());
+        dd ($question->first()->user);
     }
 
     /**
      * Статьи пользователя
      *
      */
-    public function Questions (User $user)
+    public function UserQuestions (User $user)
     {
         $user = $user->find(4); // Вернул объект user(а)
         $questions = $user->questions; // Все его статьи
 
         $user = $user->questions(); // Вернуть объект HasMany содержащий в т.ч. объект User
         $questions = $user->get()->toArray(); // Вернет коллекцию с массивом объектов questions
-        dd ($questions);
     }
 
+    /**
+     * Вопросы пользователя
+     *
+     */
     public function User (Question $question)
     {
         $question = $question->find(2); // Вернул объект question
-        $user = $question->user;
+        $user = $question->user; // Вернул юзера из связанной таблицы
+        $userName = $user->name; // Вернул имя с помощью динамического метода "name"
 
         $question = $question->user();
         $user = $question->get()->toArray();
+    }
+
+    /**
+     * Категории вопроса (категории через вопрос)
+     *
+     */
+    public function categories (Question $question){
+        $category = $question->find(1)->categories()->first()->name; // Вернет имя категории
+        dd ($category);
+    }
+
+    /**
+     * Вопросы категории (вопрос через категории)
+     *
+     */
+    public function qestions(Category $category) {
+        $qestions = $category->find(1)->qestions()->first()->title; // Вернтет заголовок вопроса
+        dd ($qestions);
     }
 }
