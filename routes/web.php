@@ -27,6 +27,15 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 /**
+ * Группа маршрутов для работы администратора
+ *
+ */
+Route::group(['prefix' => 'admin'], function () {
+    Route::resource('/category', 'Admin\CategoryController');
+    Route::resource('/category', 'Admin\CategoryController')->name('store', 'category.store'); // До конца не понимаю как это работает
+});
+
+/**
  * Тестовый роут - 1
  *
  */

@@ -49,4 +49,13 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Forum\Question');
     }
+
+    /**
+     * Связь с таблицей Roles
+     *
+     */
+    public function roles()
+    {
+        return $this->belongsToMany('App\Models\Auth\Role');
+    }
 }
