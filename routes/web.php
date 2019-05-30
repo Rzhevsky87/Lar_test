@@ -11,19 +11,20 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+/**
+ * Main route / На главную
+ *
+ *
+ */
+Route::get('/', 'forum\HomeController@index');
 
+/**
+ * Autentication
+ *
+ */
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-/**
- * Questions route
- *
- */
-Route::get('users/{id}', '');
 
 /**
  * Тестовый роут - 1
