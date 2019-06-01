@@ -32,7 +32,7 @@ Route::get('/home', 'HomeController@index')->name('home');
  */
 Route::group(['prefix' => 'admin'], function () {
     Route::resource('/category', 'Admin\CategoryController');
-    Route::resource('/category', 'Admin\CategoryController')->name('store', 'category.store'); // До конца не понимаю как это работает
+    Route::resource('/category', 'Admin\CategoryController')->name('store', 'category.store'); // >name('CRUD', 'метод контроллера') До конца не понимаю как это работает
 });
 
 /**
