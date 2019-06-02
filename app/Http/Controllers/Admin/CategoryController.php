@@ -9,6 +9,21 @@ use App\Models\Forum\Category;
 class CategoryController extends Controller
 {
     /**
+     * Переменная для объекта модели Category
+     *
+     */
+    protected $category;
+
+    /**
+     * Грузим нужные переменные
+     *
+     */
+    public function __construct()
+    {
+        $this->category = new Category;
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -45,10 +60,9 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $category = new Category;
-        $category->name = $request->name;
-        $category->save();
-        dd ($category->name);
+        $this->category->name = $request->name;
+        $this->category->save();
+        return redirect()->route('category.index');
     }
 
     /**
@@ -70,7 +84,7 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.categories.edit', ['id' => $id]);
     }
 
     /**
@@ -82,7 +96,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd (__METHOD__, $request, $id);
     }
 
     /**
