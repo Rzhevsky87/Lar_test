@@ -4,7 +4,7 @@
     <div>
         <form method="POST" action="{{ route('category.update', ['id'=>$id]) }}">
             @csrf
-            @method('PATCH')
+            @method('PUT')
             <label for="">Название катеории</label>
             <input type="text" name="name">
             {{-- <input type="hidden" name="id" value="{{ $id }}"> --}}

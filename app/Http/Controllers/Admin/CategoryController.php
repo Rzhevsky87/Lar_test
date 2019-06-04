@@ -96,7 +96,10 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd (__METHOD__, $request, $id);
+        $category = $this->category->find($id);
+        $category->name = $request->name;
+        $category->save();
+        return redirect()->route('category.index');
     }
 
     /**
