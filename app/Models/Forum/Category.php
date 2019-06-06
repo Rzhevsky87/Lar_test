@@ -14,7 +14,7 @@ class Category extends Model
     protected $fillable = ['name', 'slug', 'parent_id', 'published', 'created_by', 'modified_by'];
 
     /**
-     * Получить все вопросы связанные с этой категорией
+     * Получить все вопросы связанные с этой категорией.
      *
      */
     public function qestions()
