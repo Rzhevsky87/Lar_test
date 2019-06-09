@@ -66,7 +66,7 @@ class CategoryController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified resource. Показать конкретный "ресурс"
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -105,11 +105,18 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
+     * Очень важное примечание!!
+     * Если URI определен как something/{category},
+     * то и параметр который запрос ожидает должен быть $category
+     * и передаваться из view должен category ``['category' => $item->id]``
+     *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category_model, $category)
     {
-        //
+        //dd($category);
+        $category_model::destroy($category);
+        return redirect()->route('category.index');
     }
 }
